@@ -21,7 +21,8 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", sayhelloName)     // set router
+	//http.HandleFunc("/", sayhelloName)     // set router
+	http.Handle("/", http.FileServer(http.Dir("leaftut")))
 	err := http.ListenAndServe(":80", nil) // set listen port
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
